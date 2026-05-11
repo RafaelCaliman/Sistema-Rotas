@@ -1,0 +1,23 @@
+  body {
+            padding-top: 70px;
+            background-color: #f8f9fa;
+        }
+        .navbar-brand {
+            color: #14213d !important;
+        }
+        .nav-link {
+            color: #14213d !important;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #fca311 !important; 
+        }
+        /* Ajuste para o dropdown não ficar colado no mobile */
+        @media (max-width: 991px) {
+            .nav-item.dropdown {
+                margin-top: 10px;
+                border-top: 1px solid #eee;
+                padding-top: 10px;
+            }
+        }

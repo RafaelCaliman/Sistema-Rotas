@@ -1,0 +1,7 @@
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /Rotas/
+
+RewriteRule ^$ public/index.php [L]
+RewriteRule ^(.*)$ public/index.php [L,QSA]
