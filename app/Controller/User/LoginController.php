@@ -19,11 +19,13 @@ class LoginController extends BaseController{
 
     public function autenticar(){
         $email = $_POST['email'] ?? '' ;
-        $senha = $_POST['senha'] ?? '';
+        $senhaDigitada = $_POST['senha'] ?? '';
         
-        $user = $this->model->autenticar($email,$senha);
+        $user = $this->model->autenticar($email,$senhaDigitada);
 
           if($user){
+            $senhahash = $user['senha'];
+            if(password_verify($senhaDigitada,$senhahash)){
 
             $_SESSION['id'] = $user['id'];
             $_SESSION['nome'] = $user['nome'];
@@ -32,21 +34,25 @@ class LoginController extends BaseController{
 
             if($user['tipo'] == 'admin'){
 
-            header('Location:  /Rotas');
+            header('Location: ' . BASE_URL);
             exit;
 
             }
             elseif($user['tipo'] == 'cliente'){
 
-            header('Location: /Rotas');
+            header('Location: ' . BASE_URL);
             exit;
-            } 
-        }  
+            }
+        } else{
+            $_SESSION['senha_invalida'] = 'Senha Incorreta';
+            
 
-        else {
+        }
+     }  
+     else {
             $_SESSION['logado'] = FALSE;
             $_SESSION['erro_login'] = "E-mail ou senha incorretos.";
-            header('Location: /Rotas/login');
+            header('Location: ' . BASE_URL . '/login');
             exit;
         } 
     }

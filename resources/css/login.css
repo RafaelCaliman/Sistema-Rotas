@@ -1,27 +1,39 @@
-    body {
-            background: #f8f9fa;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .login-card {
-            width: 100%;
-            max-width: 400px;
-            padding: 2rem;
-            border-radius: 1rem;
-            border: none;
-        }
-        .btn-primary-custom {
-            background-color: #14213d;
-            color: white;
-            border: none;
-        }
-        .btn-primary-custom:hover {
-            background-color: #fca311;
-            color: #14213d;
-        }
-        .form-control:focus {
-            border-color: #fca311;
-            box-shadow: 0 0 0 0.25rem rgba(252, 163, 17, 0.25);
-        }
+body {
+    background: #f8f9fa;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: none;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary-custom {
+    background-color: #14213d;
+    color: white;
+    border: none;
+}
+
+.btn-primary-custom:hover {
+    background-color: #fca311;
+    color: #14213d;
+}
+
+.form-control:focus {
+    border-color: #fca311;
+    box-shadow: 0 0 0 0.25rem rgba(252, 163, 17, 0.25);
+}

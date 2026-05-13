@@ -3,7 +3,7 @@ class LogoutController{
 
       public function logout(){
         session_destroy();
-        header("Location: /Rotas");
+        header('Location: ' . BASE_URL);
         exit;
     }
 }

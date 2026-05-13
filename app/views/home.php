@@ -1,6 +1,3 @@
-<?php
-
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,7 +8,7 @@
     <title>Sistema Hot-dog</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../../resources/css/home.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/resources/css/home.css">
 </head>
 
 <body>
@@ -30,7 +27,7 @@
                 <div class="collapse navbar-collapse" id="navMenu">
                     <ul class="navbar-nav ms-auto gap-2 align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="/Rotas/produto">
+                            <a class="nav-link d-flex align-items-center" href="<?= BASE_URL ?>/produto">
                                 <i class="bi bi-box-seam me-1"></i> Produtos
                             </a>
                         </li>
@@ -47,13 +44,13 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end shadow border-0">
                                     <li>
-                                        <a class="dropdown-item d-flex align-items-center" href="/Rotas/perfil">
+                                        <a class="dropdown-item d-flex align-items-center" href="<?= BASE_URL ?>/perfil">
                                             <i class="bi bi-gear me-2"></i> Meu Perfil
                                         </a>
                                     </li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li>
-                                        <a class="dropdown-item d-flex align-items-center text-danger" href="/Rotas/logout">
+                                        <a class="dropdown-item d-flex align-items-center text-danger" href="<?= BASE_URL ?>/logout">
                                             <i class="bi bi-box-arrow-right me-2"></i> Sair/Logout
                                         </a>
                                     </li>
@@ -61,7 +58,7 @@
                             </li>
                         <?php } else { ?>
                             <li class="nav-item">
-                                <a class="btn btn-outline-dark px-4 ms-lg-2 d-flex align-items-center" href="/Rotas/login">
+                                <a class="btn btn-outline-dark px-4 ms-lg-2 d-flex align-items-center" href="<?= BASE_URL ?>/login">
                                     <i class="bi bi-person-circle me-1"></i> Login 
                                 </a>
                             </li>

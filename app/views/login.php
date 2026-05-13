@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Hot-Dog Brasília</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../../resources/css/login.css">
-    
-</head>
-<body>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/resources/css/login.css">
 
-    <div class="container">
+</head>
+
+<body>
+    <div class="login-wrapper">
         <div class="card login-card shadow-lg mx-auto">
             <div class="text-center mb-4">
                 <i class="bi bi-hotdog-fill text-danger" style="font-size: 3rem;"></i>
@@ -19,7 +20,7 @@
                 <p class="text-muted">Acesse o sistema Hot-Dog Brasília</p>
             </div>
 
-            <form action="/Rotas/autenticar" method="POST">
+            <form action="<?= BASE_URL ?>/autenticar" method="POST">
                 <div class="mb-3">
                     <label for="email" class="form-label fw-semibold">E-mail</label>
                     <div class="input-group">
@@ -41,13 +42,13 @@
                 </button>
 
                 <div class="text-center mt-4">
-                    <a href="/Rotas/" class="text-decoration-none text-muted small">
+                    <a href="<?= BASE_URL ?>" class="text-decoration-none text-muted small">
                         <i class="bi bi-arrow-left"></i> Voltar para a Home
                     </a>
                 </div>
 
-                 <div class="text-center mt-4">
-                    <a href="/Rotas/cadastrar" class="text-decoration-none text-muted small">
+                <div class="text-center mt-4">
+                    <a href="<?= BASE_URL ?>/cadastrar" class="text-decoration-none text-muted small">
                         <i class="bi bi-arrow-left"></i> Não tem cadastro? <strong>Cadastre Aqui</strong>
                     </a>
                 </div>
@@ -57,4 +58,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

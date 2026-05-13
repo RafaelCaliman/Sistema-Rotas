@@ -13,7 +13,7 @@ class Router{
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $method = $_SERVER['REQUEST_METHOD'];
 
-        $base = '/Rotas';
+        $base = BASE_URL;
         if (str_starts_with($uri, $base)) {
             $uri = substr($uri, strlen($base));
         }

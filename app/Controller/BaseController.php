@@ -5,7 +5,6 @@ class BaseController{
 
         require_once "../app/views/$view.php";
 
-
     }
 }
 

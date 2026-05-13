@@ -10,19 +10,27 @@ class UserModel{
        $this->conn = $database->conectar();
     }
 
-    public function autenticar ($email, $senha) {
-        $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE email = ? AND senha = ? LIMIT 1");
-        $stmt->execute([$email,$senha]);
+    public function autenticar($email, $senhaDigitada) {
+        $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE email = ? LIMIT 1");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-          return $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user && password_verify($senhaDigitada, $user['senha'])) {
+        return $user;
     }
-    public function cadastro(){
-        $stmt = $this->conn->prepare("INSERT INTO usuarios (nome,email,cpf,senha,tipo) VALUES ?,?,?,?,?");
-        $stmt->execute([$nome,$email,$cpf,$senha,'cliente']);
+    return false;
+}   
+    public function cadastro($nome,$email,$cpf,$senha){
+
+        $senhaHash = password_hash($senha,PASSWORD_DEFAULT);
+        $stmt = $this->conn->prepare("INSERT INTO usuarios (nome,email,cpf,senha,tipo) VALUES (?,?,?,?,?)");
+
+         return $stmt->execute([$nome,$email,$cpf,$senhaHash,'cliente']);
     }
-    public function validar(){
-        $stmt = $this->conn->prepare("SELECT email FROM usuarios");
-        $stmt->execute();
+    public function validar($email){
+        $stmt = $this->conn->prepare("SELECT email FROM usuarios WHERE email = ?");
+        $stmt->execute([$email]);
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
 
