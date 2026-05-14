@@ -1,4 +1,5 @@
 <?php
+namespace App\Controller\User;
 class LogoutController{
 
       public function logout(){

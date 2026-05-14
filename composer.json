@@ -1,0 +1,16 @@
+{
+    "name": "rafael/hotdog-brasilia",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Core\\": "core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "RafaelCaliman",
+            "email": "rafaelrosacaliman123@gmail.com"
+        }
+    ],
+    "require": {}
+}

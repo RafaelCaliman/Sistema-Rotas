@@ -1,5 +1,8 @@
 <?php
-require_once __DIR__ . '/../../config/Database.php';
+namespace App\Model;
+use Core\Database;
+use PDO;
+
 class UserModel{
 
     private $conn; 

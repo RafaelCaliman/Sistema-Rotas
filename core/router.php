@@ -20,14 +20,27 @@ class Router{
 
         if (isset($this->routes[$method][$uri])) {
 
-           [$controllerPath, $action] = explode('@', $this->routes[$method][$uri]);
+           [$controllerPath, $action] = explode('@', $this->routes[$method][$uri], 2);
 
             $controllerFile = __DIR__ . '/../app/Controller/' . $controllerPath . '.php';
-            require_once $controllerFile;
 
-            $controller = basename($controllerPath);
+            if (file_exists($controllerFile)) {
+                require_once $controllerFile;
+            }
 
-            $controllerInstance = new $controller();
+            $controllerClass = 'App\\Controller\\' . str_replace('/', '\\', $controllerPath);
+            $legacyControllerClass = basename($controllerPath);
+
+            if (!class_exists($controllerClass) && class_exists($legacyControllerClass)) {
+                $controllerClass = $legacyControllerClass;
+            }
+
+            if (!class_exists($controllerClass)) {
+                echo "404 - Página não encontrada";
+                return;
+            }
+
+            $controllerInstance = new $controllerClass();
 
             $controllerInstance->$action();
             

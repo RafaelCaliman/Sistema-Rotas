@@ -1,6 +1,7 @@
 <?php
-require_once '../app/model/UserModel.php';
-require_once '../app/Controller/BaseController.php';
+namespace App\Controller\User;
+use Core\BaseController;
+use App\Model\UserModel;
 
 class LoginController extends BaseController{
 

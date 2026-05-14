@@ -1,4 +1,6 @@
 <?php
+namespace Core;
+use PDO;
 class Database
 {
     private $host = "localhost";
@@ -20,7 +22,7 @@ class Database
 
             return $conn;
 
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
 
             die("Erro na conexão: " . $e->getMessage());
         }
