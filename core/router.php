@@ -18,22 +18,23 @@ class Router{
             $uri = substr($uri, strlen($base));
         }
 
-        if (isset($this->routes[$method][$uri])) {
+       foreach($this->routes[$method] as $route => $action) {
 
-           [$controllerPath, $action] = explode('@', $this->routes[$method][$uri], 2);
+         $pattern = preg_replace('/\{[a-z]+\}/', '([0-9]+)', $route);
+         $pattern = '#^' . $pattern . '$#';
+         
+         if(preg_match($pattern, $uri, $matches)){
 
-            $controllerFile = __DIR__ . '/../app/Controller/' . $controllerPath . '.php';
+         [$controllerPath, $methodName] = explode('@', $action, 2);
+
+         $controllerFile = __DIR__ . '/../app/Controller/' . $controllerPath . '.php';
+         
 
             if (file_exists($controllerFile)) {
                 require_once $controllerFile;
             }
 
             $controllerClass = 'App\\Controller\\' . str_replace('/', '\\', $controllerPath);
-            $legacyControllerClass = basename($controllerPath);
-
-            if (!class_exists($controllerClass) && class_exists($legacyControllerClass)) {
-                $controllerClass = $legacyControllerClass;
-            }
 
             if (!class_exists($controllerClass)) {
                 echo "404 - Página não encontrada";
@@ -41,14 +42,15 @@ class Router{
             }
 
             $controllerInstance = new $controllerClass();
+         
+            array_shift($matches);
 
-            $controllerInstance->$action();
-            
-        } else {
-            echo "404 - Página não encontrada";
-        }
-    }
+            call_user_func_array([$controllerInstance, $methodName], $matches);
+            return;
+
+         } 
+     }
+     echo"404 - Página não encontrada";
+  }
 }
-
-
 ?>

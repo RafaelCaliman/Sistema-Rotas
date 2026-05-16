@@ -5,10 +5,9 @@ use Core\BaseController;
 
 class Homecontroller extends BaseController{
     public function index(){
+
+        $this->render('home/home');
         
-        $this->redirect();  
-        
-        require_once '../app/views/home.php';
     }
 }
 

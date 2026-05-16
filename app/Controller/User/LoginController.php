@@ -14,7 +14,7 @@ class LoginController extends BaseController{
 
     public function index(){
 
-        $this->render('login');
+        $this->render('auth/login');
         
     }
 
@@ -35,7 +35,7 @@ class LoginController extends BaseController{
 
             if($user['tipo'] == 'admin'){
 
-            header('Location: ' . BASE_URL);
+            header('Location: ' .BASE_URL . '/admin');
             exit;
 
             }

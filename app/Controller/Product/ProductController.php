@@ -5,9 +5,9 @@ use Core\BaseController;
 
 class ProductController extends BaseController{
 
-   public function index() {
+   public function index($id) {
 
-    echo"Pretin";
+      echo "Sucesso! O ID capturado dinamicamente foi: " . $id;
 }
 }
 

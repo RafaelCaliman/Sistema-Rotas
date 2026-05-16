@@ -1,0 +1,1 @@
+<?php require_once BASE_PATH . "/resources/layout/header.php";
